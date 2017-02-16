@@ -1,0 +1,244 @@
+@import '../global/_variables'; // global variables.
+@import '../global/components/_mixins'; // global mixings.
+
+/***
+Login page
+***/
+
+/* logo page */
+.login {
+  background-color: darken($general-panel-bg-color, 25%) !important;
+
+  .logo {
+    margin: 60px auto 20px auto;
+    padding: 15px; 
+    text-align: center;
+  }
+
+  .content {
+    background-color:#fff; 
+    width: 360px;
+    margin: 0 auto; 
+    margin-bottom: 0px;
+    padding: 30px;  
+    padding-top: 20px;  
+    padding-bottom: 15px;  
+    @include border-radius(7px);
+
+    h3 {
+      color: #000;    
+      font-size: 24px;
+      font-weight: 300;
+    }
+
+    h4  {
+      color: #555;
+    }
+
+    p {
+      color: #222;
+      text-align:center;
+      &#wait {
+        margin: 0;
+      }
+    }
+
+    ul {
+        padding:0;
+      li{
+        list-style:none;
+      }
+    }
+
+    .login-form,.forget-form {
+      padding: 0px;
+      margin: 0px;
+    }
+
+    .input-icon {
+      position: relative;
+      left: 0;
+      border-left: 2px solid #44B6AE !important;
+      .form-control {
+        border-left: 0;   
+        padding-left: 33px;
+        outline: 0!important;
+      }
+    }
+
+    .form-title {
+      font-weight: 300;
+      margin-bottom: 25px;
+    }
+
+    .form-actions {
+      background-color: #fff;
+      clear: both;
+      border: 0px;
+      padding: 0px 30px 15px;
+      margin-left: -30px;
+      margin-right: -30px;
+
+      .checkbox {
+        margin-left: 0;
+        padding-left: 0;
+        margin-top: 8px;
+        display: inline-block;
+        font-weight:400;
+      }
+
+      .btn {
+        margin-top: 1px;
+      }
+
+      a {
+        margin-top: 8px;
+      }
+    }
+
+    .forget-form .form-actions {
+      border: 0;
+      margin-bottom: 0;
+      padding-bottom: 20px;
+    } 
+
+    .register-form .form-actions {
+      border: 0;
+      margin-bottom: 0;
+      padding-bottom: 0px;
+    } 
+
+    .forget-password {
+      margin-top: 25px;
+    }
+
+    .create-account a {
+      display: inline-block;
+      margin-top: 5px;
+    }
+  }
+}  
+
+/* select2 dropdowns */
+.login .content .select2-container {
+  border-left: 2px solid #44B6AE !important;
+}
+
+.login .content .select2-container .select2-choice {
+  border-left: none !important;
+}
+
+.login .content .select2-container i {
+  display: inline-block;
+  position: relative;
+  color: #ccc;
+  z-index: 1;
+  top:1px;
+  margin: 4px 4px 0px -1px; 
+  width: 16px;
+  height: 16px;
+  font-size: 16px;
+  text-align: center; 
+}
+
+.login .content .has-error .select2-container i {
+  color: #b94a48;
+}
+
+.login .content .select2-container a span {
+  font-size: 13px;
+}
+
+.login .content .select2-container a span img {
+  margin-left: 4px;
+}
+
+/* footer copyright */
+.login .copyright {
+  text-align: center;
+  margin: 0 auto; 
+  padding: 10px;
+  color: #999;
+  font-size: 13px;
+}
+
+@media (max-width: 480px) {
+  /***
+  Login page
+  ***/
+  .login .logo {
+    margin-top:10px;
+  }
+
+  .login .content {
+    width: 280px;
+  }
+
+  .login .content h3 {
+    font-size: 22px;
+  }
+
+
+  .login .checkbox {
+    font-size: 13px;
+  }
+}
+div {
+  .checker,.checker span,.checker input{
+    width: 15px;
+    height: 19px;
+  }
+  .checker {
+    display: inline-block;
+    vertical-align: middle;
+
+    input[type="checkbox"] {
+      margin-left:0;
+      margin-top:0;
+    }
+  }
+}
+
+.btn, .form-control {
+  box-shadow: none!important;
+}
+
+.input-icon>i {
+  color: #ccc;
+  position: absolute;
+  margin: 11px 2px 4px 10px;
+  z-index: 3;
+  width: 16px;
+  font-size: 16px;
+  text-align: center;
+  left: 0;
+  display: inline-block;
+  line-height: 14px;
+  -webkit-font-smoothing: antialiased;
+}
+.help-block {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+input,button,div{
+  -webkit-border-radius: 0!important;
+  -moz-border-radius: 0!important;
+  border-radius: 0!important;
+}
+
+.btn.green {
+  color: #FFF;
+  background-color: #32c5d2;
+  border-color: #32c5d2;
+  &:hover {
+    background-color: #26a1ab;
+    border-color: #2499a3;
+  }
+}
+.control-label {
+  margin-top: 1px;
+  font-weight: 400;
+}
+.visible-ie9, .visible-ie8 {
+  display: none;
+}

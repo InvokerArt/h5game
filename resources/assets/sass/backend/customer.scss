@@ -1,0 +1,50 @@
+.form-control.edui-default {
+    height: auto;
+    padding: 0;
+    border: none;
+}
+.column-slug {
+    width: 25%;
+}
+.column-posts {
+    width: 74px;
+}
+.check-column, .column-id {
+    width: 2em;
+}
+.column-status {
+    width: 5em;
+}
+.column-price {
+    width: 10em;
+}
+.column-author, .column-format, .column-links, .column-parent, .column-posts {
+    width: 10%;
+}
+.column-date,.column-actions {
+    width: 12%;
+}
+.column-categories, .column-rel, .column-response, .column-role, .column-tags {
+    width: 15%;
+}
+.column-comments {
+    width: 5.5em;
+}
+.input-group#price {
+    .form-control{
+        width:200px;
+        height: 30px;
+        border-right:none;
+        float:left;
+    }
+    .select2{
+        width: 80px !important;
+        margin-top: 0;
+    }
+}
+#comments-table p,#replies-table p{
+    margin: .6em 0;
+}
+.pages {
+    text-align: right;
+}

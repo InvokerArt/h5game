@@ -1,0 +1,130 @@
+.ks-overlay {
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+    z-index: 999999;
+    width:100%;
+}
+
+.bf-select {
+    border: 1px solid #ccc;
+    padding: 6px 12px;
+    outline: 0;
+    position: relative;
+    cursor: pointer;
+    width: 100%;    
+    float: left;
+    margin-right: 10px;
+    .fa {
+        position: absolute;
+        top: 10px;
+        right: 8px;
+        width: 10px;
+        height: 5px;
+    }
+}
+
+.city-title {
+    margin-right: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #333;
+}
+
+.ks-overlay-hidden {
+    visibility: hidden;
+}
+
+.city-select-wrap {
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+.city-select-tab {
+    border-bottom: 1px solid #ccc;
+    background: #f0f0f0;
+    font-size: 13px;
+    a {    
+        display: inline-block;
+        padding: 8px 22px;
+        border-left: 1px solid #ccc;
+        border-bottom: 1px solid transparent;
+        color: #4D4D4D;
+        text-align: center;
+        outline: 0;
+        text-decoration: none;
+        cursor: pointer;
+        font-size: 14px;
+        margin-bottom: -1px;
+        &:first-child {
+            border-left: none;
+        }
+        &:last-child.active {
+            border-right: 1px solid #ccc;
+        }
+    }
+    .current {
+        background: #fff;
+        border-bottom: 1px solid #fff;
+        color: #46A4FF;
+    }
+}
+
+.bf-select a, .bf-menu-content a {
+    text-decoration: none;
+    color: #333;
+}
+
+.city-select-content {
+    width: 100%;
+    min-height: 10px;
+    background-color: #fff;
+    padding: 10px 15px;
+}
+
+.city-select {
+    font-size: 13px;
+    dl {
+        line-height: 2;
+        clear: both;
+        padding: 3px 0;
+        margin: 0;
+    }
+    dt {    
+        position: absolute;
+        width: 2.5em;
+        font-weight: 500;
+        text-align: right;
+        line-height: 2;
+    }
+    dd {    
+        margin-left: 0;
+        line-height: 2;
+    }
+    a {
+        display: inline-block;
+        padding: 0 10px;
+        outline: 0;
+        text-decoration: none;
+        white-space: nowrap;
+        margin-right: 2px;
+        text-decoration: none;
+        color: #333;
+        cursor: pointer;
+    }
+    a.current {
+        background-color: #46A4FF;
+        color: #fff;
+        border-radius: 2px;
+    }
+    a:hover, a:focus {
+        background-color: #f1f8ff;
+        border-radius: 2px;
+        color: #46A4FF;
+    }
+    &.city-province{
+        dd{
+            margin-left: 3em;
+        }
+    }
+}
