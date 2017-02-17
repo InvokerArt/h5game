@@ -17,7 +17,7 @@ class RouteNeedsPermission
      *
      * @return mixed
      */
-    public function handle($request, Closure $next, $permission, $needsAll = false)
+    public function handle($request, Closure $next, $permission, $needsAll = false, $guard = 'admin')
     {
         /*
          * Permission array

@@ -26,9 +26,8 @@ Route::group(['namespace' => 'Auth', 'as' => 'auth.'], function () {
         // Authentication Routes
         Route::get('login', 'LoginController@showLoginForm')->name('login');
         Route::post('login', 'LoginController@login')->name('login');
-
         // Socialite Routes
-        Route::get('login/{provider}', 'SocialLoginController@login')->name('social.login');
+        //Route::get('login/{provider}', 'SocialLoginController@login')->name('social.login');
 
         // Registration Routes
         if (config('access.users.registration')) {

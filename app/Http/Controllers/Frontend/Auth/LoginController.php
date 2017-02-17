@@ -6,7 +6,6 @@ use App\Helpers\Auth\Auth;
 use Illuminate\Http\Request;
 use App\Exceptions\GeneralException;
 use App\Http\Controllers\Controller;
-use App\Helpers\Frontend\Auth\Socialite;
 use App\Events\Frontend\Auth\UserLoggedIn;
 use App\Events\Frontend\Auth\UserLoggedOut;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -39,8 +38,7 @@ class LoginController extends Controller
      */
     public function showLoginForm()
     {
-        return view('frontend.auth.login')
-            ->withSocialiteLinks((new Socialite())->getSocialLinks());
+        return view('frontend.auth.login');
     }
 
     /**
@@ -78,17 +76,6 @@ class LoginController extends Controller
      */
     public function logout(Request $request)
     {
-        /*
-         * Boilerplate needed logic
-         */
-
-        /*
-         * Remove the socialite session variable if exists
-         */
-        if (app('session')->has(config('access.socialite_session_name'))) {
-            app('session')->forget(config('access.socialite_session_name'));
-        }
-
         /*
          * Remove any session data from backend
          */

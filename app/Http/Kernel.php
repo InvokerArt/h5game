@@ -37,9 +37,9 @@ class Kernel extends HttpKernel
         ],
 
         'admin' => [
-            'auth',
-            'access.routeNeedsPermission:view-backend',
-            'timeout',
+            'admin.auth',
+            'permission:view-backend',
+            'timeout'
         ],
 
         'api' => [
@@ -64,10 +64,15 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'timeout'    => \App\Http\Middleware\SessionTimeout::class,
 
-        /*
-         * Access Middleware
+        /**
+         * 角色权限
          */
-        'access.routeNeedsRole'       => \App\Http\Middleware\RouteNeedsRole::class,
-        'access.routeNeedsPermission' => \App\Http\Middleware\RouteNeedsPermission::class,
+        'role' => \App\Http\Middleware\RouteNeedsRole::class,
+        'permission' => \App\Http\Middleware\RouteNeedsPermission::class,
+        
+        /**
+         * 自定义后台admin登录
+         */
+        'admin.auth' => \App\Http\Middleware\RedirectIfNotAdmin::class,
     ];
 }

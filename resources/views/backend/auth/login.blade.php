@@ -15,7 +15,6 @@
     <!-- Styles -->
     @yield('before-styles-end')
     <link rel="stylesheet" type="text/css" href="{{ asset('css/global/vendor/bootstrap.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/global/vendor/font-awesome.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/login.css') }}">
     @yield('after-styles-end')
     @yield('css')
@@ -36,18 +35,6 @@
             {{ csrf_field() }}
             <h3 class="form-title">登录</h3>
             @include('backend.includes.partials.messages')
-            <div class="alert alert-danger{{ $errors->has('username') || $errors->has('password') ? '' : ' hide' }}">
-                <button type="button" class="close" data-dismiss="alert"></button>
-                <ul>
-                    @if ($errors->first('username')) 
-                        <li>{{ $errors->first('username') }}</li> 
-                    @endif
-
-                    @if ($errors->first('password')) 
-                        <li>{{ $errors->first('password') }}</li>
-                    @endif
-                </ul>
-            </div>
             <div class="form-group">
                 <label for="username" class="control-label visible-ie8 visible-ie9">账户</label>
 

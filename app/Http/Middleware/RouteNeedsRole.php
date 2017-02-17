@@ -17,7 +17,7 @@ class RouteNeedsRole
      *
      * @return mixed
      */
-    public function handle($request, Closure $next, $role, $needsAll = false)
+    public function handle($request, Closure $next, $role, $needsAll = false, $guard = 'admin')
     {
         /*
          * Roles array

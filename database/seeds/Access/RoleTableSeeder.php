@@ -32,21 +32,24 @@ class RoleTableSeeder extends Seeder
 
         $roles = [
             [
-                'name'       => '管理员',
+                'name'       => 'root',
+                'display_name'       => '管理员',
                 'all'        => true,
                 'sort'       => 1,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
-                'name'       => '编辑',
+                'name'       => 'editor',
+                'display_name'       => '管理员',
                 'all'        => false,
                 'sort'       => 2,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
-                'name'       => '用户',
+                'name'       => 'user',
+                'display_name'       => '用户',
                 'all'        => false,
                 'sort'       => 3,
                 'created_at' => Carbon::now(),

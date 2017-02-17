@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'Laravel',
+    'name' => env('APP_NAME', 'Laravel'),
 
     /*
     |--------------------------------------------------------------------------
@@ -64,7 +64,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Shanghai',
 
     /*
     |--------------------------------------------------------------------------
@@ -77,7 +77,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'zh-CN',
 
     /*
     |--------------------------------------------------------------------------
@@ -90,7 +90,7 @@ return [
     |
     */
 
-    'fallback_locale' => 'en',
+    'fallback_locale' => 'zh-CN',
 
     /*
     |--------------------------------------------------------------------------
@@ -183,6 +183,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        //权限控制
+        App\Providers\AccessServiceProvider::class,
 
     ],
 

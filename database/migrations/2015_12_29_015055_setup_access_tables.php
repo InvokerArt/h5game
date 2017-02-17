@@ -26,6 +26,7 @@ class SetupAccessTables extends Migration
         Schema::create(config('access.roles_table'), function ($table) {
             $table->increments('id')->unsigned();
             $table->string('name');
+            $table->string('display_name')->default('');
             $table->boolean('all')->default(false);
             $table->smallInteger('sort')->default(0)->unsigned();
             $table->timestamps();
@@ -44,15 +45,9 @@ class SetupAccessTables extends Migration
             /*
              * Add Foreign/Unique/Index
              */
-            $table->foreign('user_id')
-                ->references('id')
-                ->on(config('access.users_table'))
-                ->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on(config('access.users_table'))->onDelete('cascade');
 
-            $table->foreign('role_id')
-                ->references('id')
-                ->on(config('access.roles_table'))
-                ->onDelete('cascade');
+            $table->foreign('role_id')->references('id')->on(config('access.roles_table'))->onDelete('cascade');
         });
 
         Schema::create(config('access.permissions_table'), function ($table) {

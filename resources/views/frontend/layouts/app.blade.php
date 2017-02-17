@@ -1,18 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="favicon.ico"/>
+    <title>{{ app_name() }}</title>
+    <meta name="keywords" content="H5游戏,最新H5游戏,免费游戏">
+    <meta name="descriptions" content="H5游戏平台是国内H5游戏最全最好玩的门户网站">
+    <!-- Styles -->
+    <link href="{{ mix('css/frontend/app.css') }}" rel="stylesheet">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>环保降解袋</title>
-
-    <!-- Styles -->
-    <link href="/css/advertising/default.css" rel="stylesheet">
-
     <!-- Scripts -->
     <script>
         window.Laravel = <?php echo json_encode([
@@ -36,7 +35,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        环保降解袋
+                        <img src="{{ asset('images/logo.png') }}" alt="{{ app_name() }}" class="logo">
                     </a>
                 </div>
 
@@ -80,7 +79,6 @@
 
         <!-- JavaScripts -->
         <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="{{asset('js/vendor/jquery/jquery-2.2.4.min.js')}}"><\/script>')</script>
         @yield('js')
     </div>
 </body>
