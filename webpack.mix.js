@@ -30,9 +30,7 @@ mix
         'resources/assets/css/vendor/jquery.dataTables.min.css',
         'resources/assets/css/vendor/dataTables.bootstrap.css',
         'resources/assets/css/vendor/bootstrap-datetimepicker.min.css',
-        'resources/assets/css/vendor/media-manager.css'
-    ], 'resources/assets/css/backend/plugin.css')
-    .combine([
+        'resources/assets/css/vendor/media-manager.css',
         'resources/assets/css/backend/plugin.css',
         'resources/assets/css/backend/default.css',
     ], 'public/css/backend/default.css')
