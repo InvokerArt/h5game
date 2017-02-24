@@ -25,7 +25,7 @@ class LoginController extends Controller
     public function redirectPath()
     {
         if (access()->allow('view-backend')) {
-            return route('admin.dashboard');
+            return route(env('APP_BACKEND_PREFIX').'dashboard');
         }
 
         return route('frontend.user.dashboard');
@@ -76,19 +76,6 @@ class LoginController extends Controller
      */
     public function logout(Request $request)
     {
-        /*
-         * Remove any session data from backend
-         */
-        app()->make(Auth::class)->flushTempSession();
-
-        /*
-         * Fire event, Log out user, Redirect
-         */
-        event(new UserLoggedOut($this->guard()->user()));
-
-        /*
-         * Laravel specific logic
-         */
         $this->guard()->logout();
         $request->session()->flush();
         $request->session()->regenerate();

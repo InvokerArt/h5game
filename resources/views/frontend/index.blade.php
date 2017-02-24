@@ -1,14 +1,15 @@
 @extends('frontend.layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div>
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        欢迎~
-                    </div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card" style="margin-top: 25px">
+            <div class="card-header">
+                欢迎
+            </div>
+            <div class="card-block">
+                <div class="card-text">
+                    欢迎~
                 </div>
             </div>
         </div>

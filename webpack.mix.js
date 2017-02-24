@@ -24,7 +24,7 @@ mix
     /**
      * 默认模板
      */
-    .sass('resources/assets/sass/backend/app.scss', 'css/backend/default.css')
+    .sass('resources/assets/sass/backend/app.scss', '../resources/assets/css/backend/default.css')
     .combine([
         'resources/assets/css/backend/app.css',
         'resources/assets/css/vendor/jquery.dataTables.min.css',
@@ -34,7 +34,7 @@ mix
     ], 'resources/assets/css/backend/plugin.css')
     .combine([
         'resources/assets/css/backend/plugin.css',
-        'public/css/backend/default.css',
+        'resources/assets/css/backend/default.css',
     ], 'public/css/backend/default.css')
 
     /**

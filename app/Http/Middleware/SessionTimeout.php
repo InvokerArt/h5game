@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Session\Store;
+use Auth;
 
 /**
  * Class SessionTimeout.
@@ -37,20 +38,20 @@ class SessionTimeout
      *
      * @return mixed
      */
-    public function handle($request, Closure $next)
+    public function handle($request, Closure $next, $guard = 'admin')
     {
         if (config('misc.session_timeout_status')) {
             $isLoggedIn = $request->path() != '/logout';
 
-            if (! session('lastActivityTime')) {
+            if (!session('lastActivityTime')) {
                 $this->session->put('lastActivityTime', time());
             } elseif (time() - $this->session->get('lastActivityTime') > $this->timeout) {
                 $this->session->forget('lastActivityTime');
-                $cookie = cookie('intend', $isLoggedIn ? url()->current() : 'admin/dashboard');
-                $email = $request->user()->email;
+                $cookie = cookie('intend', $isLoggedIn ? url()->current() : 'backend/dashboard');
+                $mobile = Auth::guard($guard)->user()->mobile;
                 access()->logout();
 
-                return redirect()->route('frontend.auth.login')->withFlashWarning(trans('strings.backend.general.timeout').$this->timeout / 60 .trans('strings.backend.general.minutes'))->withInput(compact('email'))->withCookie($cookie);
+                return redirect()->route('backend.auth.login')->withFlashWarning('由于您在' . $this->timeout / 60 . '分钟内没有活动，因此出于安全考虑，系统会自动退出。')->withInput(compact('mobile'))->withCookie($cookie);
             }
 
             $isLoggedIn ? $this->session->put('lastActivityTime', time()) : $this->session->forget('lastActivityTime');

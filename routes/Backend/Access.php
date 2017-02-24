@@ -9,68 +9,64 @@ Route::group([
     'namespace'  => 'Access',
 ], function () {
 
-    /*
-     * User Management
-     */
-    Route::group([
-        'middleware' => 'access.routeNeedsPermission:manage-users',
-    ], function () {
-        Route::group(['namespace' => 'User'], function () {
-            /*
-             * For DataTables
-             */
-            Route::post('user/get', 'UserTableController')->name('user.get');
+    //管理员
+    Route::get('/admin/get', 'AdminController@get')->name('admin.get')->middleware('access.routeNeedsPermission:manage-admin');
+    Route::resource('/admin', 'AdminController', ['middleware' => 'access.routeNeedsPermission:manage-admin']);
+    //角色
+    Route::get('/role/get', 'RoleController@get')->name('role.get')->middleware('access.routeNeedsPermission:manage-roles');
+    Route::resource('/role', 'RoleController', ['middleware' => 'access.routeNeedsPermission:manage-roles']);
+    //权限
+    Route::get('/permission/get', 'PermissionController@get')->name('permission.get')->middleware('access.routeNeedsPermission:manage-permissions');
+    Route::resource('/permission', 'PermissionController', ['middleware' => 'access.routeNeedsPermission:manage-permissions']);
+});
 
-            /*
-             * User Status'
-             */
-            Route::get('user/deactivated', 'UserStatusController@getDeactivated')->name('user.deactivated');
-            Route::get('user/deleted', 'UserStatusController@getDeleted')->name('user.deleted');
+/*
+ * User Management
+ */
+Route::group([
+    'middleware' => 'access.routeNeedsPermission:manage-users',
+], function () {
+    Route::group(['namespace' => 'User'], function () {
+        /*
+         * For DataTables
+         */
+        Route::get('user/get', 'UserController@get')->name('user.get');
 
-            /*
-             * User CRUD
-             */
-            Route::resource('user', 'UserController');
+        /*
+         * User CRUD
+         */
+        Route::resource('user', 'UserController');
 
-            /*
-             * Specific User
-             */
-            Route::group(['prefix' => 'user/{user}'], function () {
-                // Account
-                Route::get('account/confirm/resend', 'UserConfirmationController@sendConfirmationEmail')->name('user.account.confirm.resend');
+        /*
+         * User Status'
+         */
+        Route::get('user/deactivated', 'UserStatusController@getDeactivated')->name('user.deactivated');
+        Route::get('user/deleted', 'UserStatusController@getDeleted')->name('user.deleted');
 
-                // Status
-                Route::get('mark/{status}', 'UserStatusController@mark')->name('user.mark')->where(['status' => '[0,1]']);
+        /*
+         * Specific User
+         */
+        Route::group(['prefix' => 'user/{user}'], function () {
+            // Account
+            Route::get('account/confirm/resend', 'UserConfirmationController@sendConfirmationEmail')->name('user.account.confirm.resend');
 
-                // Password
-                Route::get('password/change', 'UserPasswordController@edit')->name('user.change-password');
-                Route::patch('password/change', 'UserPasswordController@update')->name('user.change-password');
+            // Status
+            Route::get('mark/{status}', 'UserStatusController@mark')->name('mark')->where(['status' => '[0,1]']);
 
-                // Access
-                Route::get('login-as', 'UserAccessController@loginAs')->name('user.login-as');
-            });
+            // Password
+            Route::get('password/change', 'UserPasswordController@edit')->name('user.change-password');
+            Route::patch('password/change', 'UserPasswordController@update')->name('user.change-password');
 
-            /*
-             * Deleted User
-             */
-            Route::group(['prefix' => 'user/{deletedUser}'], function () {
-                Route::get('delete', 'UserStatusController@delete')->name('user.delete-permanently');
-                Route::get('restore', 'UserStatusController@restore')->name('user.restore');
-            });
+            // Access
+            Route::get('login-as', 'UserAccessController@loginAs')->name('user.login-as');
         });
-    });
 
-    /*
-     * Role Management
-     */
-    Route::group([
-        'middleware' => 'access.routeNeedsPermission:manage-roles',
-    ], function () {
-        Route::group(['namespace' => 'Role'], function () {
-            Route::resource('role', 'RoleController', ['except' => ['show']]);
-
-            //For DataTables
-            Route::post('role/get', 'RoleTableController')->name('role.get');
+        /*
+         * Deleted User
+         */
+        Route::group(['prefix' => 'user/{deletedUser}'], function () {
+            Route::get('delete', 'UserStatusController@delete')->name('user.delete-permanently');
+            Route::get('restore', 'UserStatusController@restore')->name('user.restore');
         });
     });
 });

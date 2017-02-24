@@ -14,8 +14,8 @@
     <link rel="shortcut icon" href="/favicon.ico"/>
     <!-- Styles -->
     @yield('before-styles-end')
-    {!! Html::style(elixir('css/backend/default.css'),['id'=>'style_color']) !!}
-{{--     {!! Html::style(elixir('css/backend/components.css'),['id'=>'style_components']) !!} --}}
+    {!! Html::style(mix('css/backend/default.css'),['id'=>'style_color']) !!}
+    {{--     {!! Html::style(mix('css/backend/components.css'),['id'=>'style_components']) !!} --}}
     @yield('after-styles-end')
     @yield('css')
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -78,7 +78,7 @@
     <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="{{asset('js/vendor/jquery/jquery-2.2.4.min.js')}}"><\/script>')</script>
     @yield('before-scripts-end')
-    {!! HTML::script(elixir('js/backend.js')) !!}
+    {!! HTML::script(mix('js/backend.js')) !!}
     @yield('after-scripts-end')
     @yield('js')
 </body>

@@ -1,57 +1,38 @@
 @extends('frontend.layouts.app')
 
 @section('content')
-
-    <div class="row">
-
-        <div class="col-md-8 col-md-offset-2">
-
-            <div class="panel panel-default">
-                <div class="panel-heading">登录</div>
-
-                <div class="panel-body">
-
+    <div class="col-md-8 offset-md-2">
+        <div class="card" style="margin-top: 25px;">
+            <div class="card-header">登录</div>
+            <div class="card-block offset-md-3 col-md-6">
+                <div class="card-text">
                     {{ Form::open(['route' => 'frontend.auth.login', 'class' => 'form-horizontal']) }}
+                    @include('frontend.includes.partials.messages')
+                    <div class="form-group">
+                        {{ Form::label('email', '邮箱', ['class' => 'form-control-label']) }}
+                        {{ Form::input('email', 'email', null, ['class' => 'form-control']) }}
+                    </div>
 
                     <div class="form-group">
-                        {{ Form::label('email', '邮箱', ['class' => 'col-md-4 control-label']) }}
-                        <div class="col-md-6">
-                            {{ Form::input('email', 'email', null, ['class' => 'form-control']) }}
-                        </div><!--col-md-6-->
-                    </div><!--form-group-->
+                        {{ Form::label('password', '密码', ['class' => 'form-control-label']) }}
+                        {{ Form::input('password', 'password', null, ['class' => 'form-control']) }}
+                    </div>
 
                     <div class="form-group">
-                        {{ Form::label('password', '密码', ['class' => 'col-md-4 control-label']) }}
-                        <div class="col-md-6">
-                            {{ Form::input('password', 'password', null, ['class' => 'form-control']) }}
-                        </div><!--col-md-6-->
-                    </div><!--form-group-->
+                        <div class="checkbox">
+                            <label>
+                                {{ Form::checkbox('remember') }} 记住密码
+                            </label>
+                        </div>
+                    </div>
 
                     <div class="form-group">
-                        <div class="col-md-6 col-md-offset-4">
-                            <div class="checkbox">
-                                <label>
-                                    {{ Form::checkbox('remember') }} 记住密码
-                                </label>
-                            </div>
-                        </div><!--col-md-6-->
-                    </div><!--form-group-->
-
-                    <div class="form-group">
-                        <div class="col-md-6 col-md-offset-4">
-                            {{ Form::submit('登录', ['class' => 'btn btn-primary', 'style' => 'margin-right:15px']) }}
-
-                            {{ link_to_route('frontend.auth.password.reset', '忘记密码？') }}
-                        </div><!--col-md-6-->
-                    </div><!--form-group-->
-
+                        {{ Form::submit('登录', ['class' => 'btn btn-primary', 'style' => 'margin-right:15px']) }}
+                        {{ link_to_route('frontend.auth.password.reset', '忘记密码？') }}
+                    </div>
                     {{ Form::close() }}
-                </div><!-- panel body -->
-
-            </div><!-- panel -->
-
-        </div><!-- col-md-8 -->
-
-    </div><!-- row -->
-
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection

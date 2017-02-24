@@ -32,7 +32,7 @@ Route::group(['namespace' => 'Backend', 'prefix' => env('APP_BACKEND_PREFIX'), '
     includeRouteFiles(__DIR__.'/Backend/');
 });
 
-Route::group(['namespace' => 'Backend', 'prefix' => env('APP_BACKEND_PREFIX'), 'as' => env('APP_BACKEND_PREFIX').'.', 'middleware' => 'guest'], function () {
+Route::group(['namespace' => 'Backend', 'prefix' => env('APP_BACKEND_PREFIX'), 'as' => env('APP_BACKEND_PREFIX').'.', 'middleware' => 'guest:admin'], function () {
     Route::group(['namespace' => 'Auth', 'as' => 'auth.'], function () {
         Route::get('login', 'LoginController@showLoginForm')->name('login');
         Route::post('login', 'LoginController@login');

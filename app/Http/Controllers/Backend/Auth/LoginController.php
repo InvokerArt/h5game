@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers\Backend\Auth;
 
+use App\Events\Backend\Auth\UserLoggedIn;
 use App\Exceptions\GeneralException;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Foundation\Auth\RedirectsUsers;
+use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Lang;
-use Illuminate\Foundation\Auth\RedirectsUsers;
-use Illuminate\Foundation\Auth\ThrottlesLogins;
 
 class LoginController extends Controller
 {
